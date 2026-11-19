@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+    <meta charset="UTF-8">
+    <title>The World Awaits</title>
+
+    <style>
+
+        /* CONFIGURACIÓN GENERAL */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Times New Roman", Times, serif;
+            background-color: #F6D58A;
+            color: #4169E1;
+        }
+
+        /* ENCABEZADO */
+
+        header {
+            background-image:
+                linear-gradient(
+                    rgba(0,0,0,0.58),
+                    rgba(0,0,0,0.58)
+                ),
+                url("fondo.jpg");
+
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 110px 20px;
+        }
+
+        header h1 {
+            font-size: 58px;
+            margin: 0;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+        }
+
+        header h1::after {
+            content: "";
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: #cdb8a5;
+            margin: 20px auto;
+        }
+
+        header p {
+            font-size: 22px;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        /* MENÚ */
+
+        nav {
+            background-color: #171514;
+            text-align: center;
+            padding: 18px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #f4eee8;
+            text-decoration: none;
+            margin: 0 18px;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #cdb8a5;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+
+        main {
+            width: 90%;
+            max-width: 1100px;
+            margin: 50px auto;
+        }
+
+        /* SECCIONES */
+
+        section {
+            background-color: white;
+            padding: 45px;
+            margin-bottom: 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            color: #292522;
+            font-size: 30px;
+            margin-top: 0;
+            border-left: 5px solid #b9a18e;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #292522;
+        }
+
+        p {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        /* SECCIÓN DESTACADA */
+
+        .destacada {
+            background-color: #292522;
+            color: white;
+            text-align: center;
+        }
+
+        .destacada h2 {
+            color: white;
+            border-left: none;
+            border-bottom: 2px solid #cdb8a5;
+            padding-left: 0;
+            padding-bottom: 12px;
+            display: inline-block;
+        }
+
+        /* BOTONES */
+
+        .boton {
+            display: inline-block;
+            background-color: #C62828;
+            color: white;
+            padding: 13px 28px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 15px;
+            transition:
+                background-color 0.3s,
+                transform 0.3s;
+        }
+
+        .boton:hover {
+            background-color: #8B0000;
+            transform: translateY(-2px);
+        }
+
+        .boton-claro {
+            display: inline-block;
+            background-color: #C62828;
+            color: white;
+            padding: 13px 28px;
+            text-decoration: none;
+            border-radius: 6px;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .boton-claro:hover {
+            background-color: #8B0000;
+            transform: translateY(-2px);
+        }
+
+        /* IMAGEN PRINCIPAL */
+
+        .imagen-principal {
+            display: block;
+            width: 25%;
+            max-width: 220px;
+            height: auto;
+            margin: 30px auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.20);
+            transition: transform 0.3s;
+        }
+
+        .imagen-principal:hover {
+            transform: scale(1.03);
+        }
+
+        /* TARJETAS DE PRODUCTOS */
+
+        .productos {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .producto {
+            width: 280px;
+            background-color: #f4eee8;
+            padding: 18px;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            transition:
+                transform 0.3s,
+                box-shadow 0.3s;
+        }
+
+        .producto:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+        }
+
+        .producto img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .producto h3 {
+            margin-bottom: 5px;
+            font-size: 21px;
+        }
+
+        .producto p {
+            font-size: 15px;
+        }
+
+        /* LISTAS */
+
+        ul,
+        ol {
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        /* VIDEO */
+
+        .video-contenedor {
+            background-color: #f4eee8;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        .video-principal {
+            display: block;
+            width: 60%;
+            max-width: 500px;
+            height: auto;
+            margin: auto;
+            border-radius: 8px;
+        }
+
+        /* TABLA */
+
+        table {
+            width: 90%;
+            margin: 25px auto;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        th {
+            background-color: #292522;
+            color: white;
+            padding: 14px;
+        }
+
+        td {
+            border: 1px solid #d5c8bd;
+            padding: 12px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f4eee8;
+        }
+
+        tr:hover {
+            background-color: #e8ddd4;
+        }
+
+        /* FORMULARIO */
+
+        form {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #cdbfb3;
+            border-radius: 6px;
+            font-family: "Times New Roman", Times, serif;
+            background-color: #faf8f6;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border: 2px solid #8e7968;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            background-color: #C62828;
+            color: white;
+            border: none;
+            padding: 13px 28px;
+            margin-top: 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #8B0000;
+            transform: translateY(-2px);
+        }
+
+        /* PIE DE PÁGINA */
+
+        footer {
+            background-color: #171514;
+            color: #f4eee8;
+            text-align: center;
+            padding: 35px;
+            margin-top: 50px;
+        }
+
+        footer p {
+            margin: 5px;
+            font-size: 15px;
+        }
+
+        /* RESPONSIVO */
+
+        @media (max-width: 700px) {
+
+            header {
+                padding: 80px 20px;
+            }
+
+            header h1 {
+                font-size: 40px;
+            }
+
+            nav a {
+                display: block;
+                margin: 10px;
+            }
+
+            main {
+                width: 95%;
+            }
+
+            section {
+                padding: 25px;
+            }
+
+            .imagen-principal {
+                width: 55%;
+            }
+
+            .video-principal {
+                width: 100%;
+            }
+
+            table {
+                width: 100%;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+
+    <header>
+
+        <h1>The World Awaits</h1>
+
+        <p>
+            Where Your Next Adventure Begins
+        </p>
+
+    </header>
+
+    <!-- MENÚ -->
+
+    <nav>
+
+        <a href="#inicio">Inicio</a>
+
+        <a href="#productos">Vuelos</a>
+
+        <a href="#proceso">Hospedaje</a>
+
+        <a href="#proceso">Experiencias</a>
+
+        <a href="#precios">Precios</a>
+
+        <a href="#contacto">Contacto</a>
+
+    </nav>
+
+    <main>
+
+        <!-- INICIO -->
+
+        <section id="inicio">
+
+            <h2>Bienvenidos</h2>
+
+            <p>
+
+                Bienvenidos a
+                <strong>The World Awaits</strong>,
+                The World Awaits is a tourism website where you can discover beautiful destinations, learn about different cultures, and find ideas for your next trip. Start exploring and let the world inspire you!
+
+            </p>
+
+            <img
+                src="Imagen 1.jpg"
+                alt="Pastel de Dulce Momento"
+                class="imagen-principal"
+            >
+
+            <div style="text-align: center;">
+
+                <p>
+
+                    Nuestro prop&oacute;sito es crear experiencias únicas e innolvidables.
+
+                </p>
+
+                <a
+                    href="#productos"
+                    class="boton"
+                >
+
+                    Ver servicios
+
+                </a>
+
+        </section>
+
+        <!-- PROPÓSITO -->
+
+        <section class="destacada">
+
+            <h2>Un momento especial</h2>
+
+            <p>
+
+                The world is full of places waiting to be discovered. Find your next destination, create unforgettable memories, and let the journey begin.
+
+            </p>
+
+            <a
+                href="#contacto"
+                class="boton-claro"
+            >
+
+                Realizar una consulta
+
+            </a>
+
+        </section>
+
+        <!-- PRODUCTOS -->
+
+        <section id="productos">
+
+            <h2>Nuestros servicios</h2>
+
+            <p>
+
+                Conoce algunos de los servicios que ofrecemos.
+
+            </p>
+
+            <div class="productos">
+
+                <div class="producto">
+
+                    <img
+                        src="Imagen 3.jpg"
+                        alt="Vuelo económico"
+                    >
+
+                    <h3>Vuelos</h3>
+
+                    <p>
+
+                        Opciones de vuelo a tu destino favorito de forma accesible
+
+                    </p>
+
+                </div>
+
+                <div class="producto">
+
+                    <img
+                        src="Imagen 4.jpg"
+                        alt="Estancia cómoda"
+                    >
+
+                    <h3>Hospedaje</h3>
+
+                    <p>
+
+                        Opciones de hotel cómodos y accesibles para hospedarte durantes tu estancia
+
+                    </p>
+
+                </div>
+
+                <div class="producto">
+
+                    <img
+                        src="Imagen 2.jpg"
+                        alt="Momentos memorables"
+                    >
+
+                    <h3>Experiencias</h3>
+
+                    <p>
+
+                        Actividades interesantes para realizar durante tu viaje
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- LISTAS -->
+
+        <section>
+
+            <h2>¿Qu&eacute; ofrecemos?</h2>
+
+            <p>
+
+                Algunos de nuestros servicios son:
+
+            </p>
+
+            <ul>
+
+                <li>Agenda de vuelos</li>
+
+                <li>Búsqueda de hoteles</li>
+
+                <li>Encontrar nuevas experiencias</li>
+
+                <li>Disfrutar</li>
+
+            </ul>
+
+            <h3>Proceso de agenda</h3>
+
+            <ol>
+
+                <li>Elegir tu destino.</li>
+
+                <li>Encontrar un vuelo que se acomode a tu horario y presupuesto.</li>
+
+                <li>Seleccionar las experiencias preferidas.</li>
+
+                <li>Confirmar la fecha y realizar el pago.</li>
+
+            </ol>
+
+        </section>
+
+        <!-- VIDEO -->
+
+        <section id="proceso">
+
+            <h2>Hoteles y experiencias</h2>
+
+            <p>
+
+                ¿Dónde y qué harás en tu estancia?
+
+            </p>
+
+            <div class="video-contenedor">
+
+                <video
+                    class="video-principal"
+                    controls
+                >
+
+                    <source
+                        src="Video 1.mp4"
+                        type="video/mp4"
+                    >
+
+                    Tu navegador no puede reproducir este video.
+
+                </video>
+
+            </div>
+
+        </section>
+
+        <!-- PRECIOS -->
+
+        <section id="precios">
+
+            <h2>Servicios y precios</h2>
+
+            <!-- Categorías -->
+
+            <div>
+
+                <button>✈ Flights</button>
+
+                <button>🏨 Hotels</button>
+
+                <button>☆ Experiences</button>
+
+            </div>
+
+            <!-- Origen -->
+
+            <label>From...</label>
+
+            <button>
+                • Mérida, Yucatán
+                ⌄
+            </button>
+
+            <!-- Destino -->
+
+            <label>To...</label>
+
+            <button>
+                • New York (JFK)
+                ⌄
+            </button>
+
+            <!-- Fecha y pasajeros -->
+
+            <div>
+
+                <button> July 25 - July 30 ⌄</button>
+
+                <button> 2 Adults ⌄</button>
+
+            </div>
+
+            <!-- Buscar -->
+
+            <button>
+                Search Flights →
+            </button>
+
+        </section>
+
+        <!-- HIPERVÍNCULO -->
+
+        <section>
+
+            <h2>M&aacute;s informaci&oacute;n</h2>
+
+            <p>
+
+                Puedes consultar informaci&oacute;n adicional
+                en el siguiente sitio:
+
+            </p>
+
+            <a
+                href="file:///C:/Users/Lenovo/OneDrive/Escritorio/Mi%20otra%20p%C3%A1gina%20web/index.html#proceso"
+                target="_blank"
+                class="boton"
+            >
+
+                Visitar sitio
+
+            </a>
+
+        </section>
+
+        <!-- FORMULARIO -->
+
+        <section id="contacto">
+
+            <h2>Cont&aacute;ctanos</h2>
+
+            <form>
+
+                <label>
+                    Nombre:
+                </label>
+
+                <input
+                    type="text"
+                    name="nombre"
+                    placeholder="Escribe tu nombre"
+                >
+
+                <label>
+                    Correo electr&oacute;nico:
+                </label>
+
+                <input
+                    type="email"
+                    name="correo"
+                    placeholder="ejemplo@correo.com"
+                >
+
+                <label>
+                    Producto de inter&eacute;s:
+                </label>
+
+                <select name="Servicio">
+
+                    <option>Vuelos</option>
+
+                    <option>Hoteles</option>
+
+                    <option>Experiencias</option>
+
+                    <option>Todo</option>
+
+                </select>
+
+                <label>
+                    Mensaje:
+                </label>
+
+                <textarea
+                    name="mensaje"
+                    rows="5"
+                    placeholder="Escribe tu mensaje"
+                ></textarea>
+
+                <button type="submit">
+
+                    Enviar mensaje
+
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+
+    <footer>
+
+        <p>
+            &copy; 2026 The World Awaits
+        </p>
+
+        <p>
+            Donde empieza tu nuevo destino
+        </p>
+
+        <p> Aleisha Medina</p>
+
+        <p> Paginas Web </p>
+
+    </footer>
+
+</body>
+
+</html>
